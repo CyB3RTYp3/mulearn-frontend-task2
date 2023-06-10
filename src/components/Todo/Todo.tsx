@@ -4,7 +4,7 @@ import "./Todo.css";
 interface Todo {
   id: number;
   title: string;
-  completed: boolean;
+  isCompleted: boolean;
 }
 
 interface TodoProps {
@@ -34,7 +34,7 @@ const Todo = ({ handleLogout }: TodoProps) => {
         const todosWithId = todosData.map((todo: Todo) => ({
           id: todo.id,
           title: todo.title,
-          completed: todo.completed,
+          completed: todo.isCompleted,
         }));
         setTodos(todosWithId);
       } else {
@@ -45,7 +45,7 @@ const Todo = ({ handleLogout }: TodoProps) => {
     }
   };
 
-  const createTodo = async () => {
+  const addTodo = async () => {
     if (newTodo.trim() === '') return;
     try {
       const response = await fetch('https://mulearn-internship-task-production.up.railway.app/api/todo/', {
@@ -89,7 +89,7 @@ const Todo = ({ handleLogout }: TodoProps) => {
 
   const toggleTodoStatus = async (id: number) => {
     const updatedTodos = todos.map((todo) =>
-      todo.id === id ? { ...todo, completed: !todo.completed } : todo
+      todo.id === id ? { ...todo, completed: !todo.isCompleted } : todo
     );
     setTodos(updatedTodos);
 
@@ -138,7 +138,7 @@ const Todo = ({ handleLogout }: TodoProps) => {
                 onChange={(e) => setNewTodo(e.target.value)}
                 className='input-todo'
               />
-              <button onClick={createTodo} className='button-todo'>
+              <button onClick={addTodo} className='button-todo'>
                 Add Todo
               </button>
             </>
@@ -150,11 +150,11 @@ const Todo = ({ handleLogout }: TodoProps) => {
 
       <ul className='todo-list'>
         {todos.map((todo) => (
-          <li key={todo.id} className={`todo-item ${todo.completed ? 'completed' : ''}`}>
+          <li key={todo.id} className={`todo-item ${todo.isCompleted ? 'completed' : ''}`}>
             <label className='todo-label'>
               <input
                 type='radio'
-                checked={todo.completed}
+                checked={todo.isCompleted}
                 onChange={() => toggleTodoStatus(todo.id)}
                 className='radio-button'
               />
@@ -162,7 +162,7 @@ const Todo = ({ handleLogout }: TodoProps) => {
             </label>
             <span
               onClick={() => toggleTodoStatus(todo.id)}
-              className={`todo-text ${todo.completed ? 'completed' : ''}`}
+              className={`todo-text ${todo.isCompleted ? 'completed' : ''}`}
             >
               {todo.title}
             </span>

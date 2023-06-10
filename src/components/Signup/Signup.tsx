@@ -12,24 +12,24 @@ function Signup() {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    try {
-      const response = await fetch('https://mulearn-internship-task-production.up.railway.app/api/register/', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ username, email, phone, password }),
-      });
+    if (password !='') {
+      try {
+        const response = await fetch('https://mulearn-internship-task-production.up.railway.app/api/register/', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({username,password}),
+        });
 
-      if (response.ok) {
-      
-        navigate('/');
-      } else {
-        
-        console.log('Registration failed');
+        if (response.ok) {
+          navigate('/');
+        } else {
+          throw new Error('Error registering user');
+        }
+      } catch (error) {
+        console.log(error);
       }
-    } catch (error) {
-      console.error('Error during registration:', error);
     }
   };
 

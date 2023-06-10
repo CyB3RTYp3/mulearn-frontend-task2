@@ -14,40 +14,29 @@ const Login = ({ handleLogin, loggedIn }: Props) => {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    
     try {
-      // Make API call to authenticate user and get tokens
-      const response = await fetch('/api/login', {
+      const response = await fetch('https://mulearn-internship-task-production.up.railway.app/api/login/', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({
-          username,
-          password,
-        }),
+        body: JSON.stringify({ username, password }),
       });
 
       if (response.ok) {
-        const { access, refresh } = await response.json();
-
-        // Store tokens in local storage or in a state management solution
-        localStorage.setItem('access_token', access);
-        localStorage.setItem('refresh_token', refresh);
-
         handleLogin(username, password);
         navigate('/todo');
       } else {
-        throw new Error('Invalid username or password');
+        throw new Error('Invalid credentials');
       }
     } catch (error) {
-      console.error(error);
-      alert('Error occurred during login');
+      console.log(error);
     }
   };
 
   if (loggedIn) {
-    return <p>You are already logged in!</p>;
+    navigate('/todos');
+    alert("You have already logged in");
   }
 
   return (
