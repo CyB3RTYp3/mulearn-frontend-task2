@@ -46,6 +46,9 @@ function Routing() {
        
         
       });
+      if(response.ok){
+        setLoggedIn(false);
+      }
         localStorage.removeItem('accessToken');
         localStorage.removeItem('refreshToken');
 
