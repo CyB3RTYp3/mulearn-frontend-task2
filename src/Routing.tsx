@@ -46,15 +46,12 @@ function Routing() {
        
         
       });
-      if (response.ok) {
         localStorage.removeItem('accessToken');
         localStorage.removeItem('refreshToken');
 
         setLoggedIn(false);
-      } else {
-        alert('Logout failed');
-      }
-    } catch (error) {
+      } 
+      catch (error) {
       console.log(error);
     }
   };
