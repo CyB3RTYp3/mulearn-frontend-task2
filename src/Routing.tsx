@@ -1,5 +1,5 @@
 import {BrowserRouter as Router,Routes,Route} from 'react-router-dom'
-import React,{useState} from 'react'
+import {useState} from 'react'
 
 import Login from './components/Login/Login'
 import Signup from './components/Signup/Signup'
