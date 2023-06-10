@@ -1,5 +1,5 @@
 import {BrowserRouter as Router,Routes,Route} from 'react-router-dom'
-import {useState} from 'react'
+import React,{useState} from 'react'
 
 import Login from './components/Login/Login'
 import Signup from './components/Signup/Signup'
@@ -23,8 +23,6 @@ function Routing() {
       if (response.ok) {
         const data = await response.json();
         const { access, refresh } = data;
-
-        // Store tokens securely, such as in browser cookies or local storage
         localStorage.setItem('accessToken', access);
         localStorage.setItem('refreshToken', refresh);
 
@@ -48,9 +46,7 @@ function Routing() {
        
         
       });
-
       if (response.ok) {
-        // Clear tokens from storage
         localStorage.removeItem('accessToken');
         localStorage.removeItem('refreshToken');
 
@@ -76,7 +72,8 @@ function Routing() {
                   <Todo handleLogout={handleLogout} />
                    ) : (
                    <Login handleLogin={handleLogin} loggedIn={loggedIn} />
-                  )} /> 
+                  )} 
+                  /> 
 
         </Routes>
       </Router>
