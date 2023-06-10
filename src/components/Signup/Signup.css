@@ -1,0 +1,107 @@
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+
+.signup{
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    box-shadow: none; 
+    overflow: hidden;
+}
+
+.signup-div{
+        background-color: white;
+        color: #025464;
+        min-width: 350px;
+        max-height: 400px;
+        margin:150px;
+        border-radius: 10px;
+}
+
+.h1_s{
+    display: flex;
+    justify-content: center;
+    font-size:20px;
+    font-weight: bold;
+    color: #025464;
+}
+
+.form_s{
+    margin: 30px;
+ }
+
+ 
+.input-signup{
+    border-radius: 10px;
+    border-width: thin;
+    padding-left: 20px;
+    width: 300px;
+    height: 30px;
+    border-style: dashed;
+
+    
+}
+
+.signup-btn{
+    cursor: pointer;
+    background-color: #025464;
+    border-style: none;
+    color: #fff;
+    font-size: medium;
+    border-radius: 10px;
+    border-width: thin;
+    margin-left: 10px;
+    width:300px;
+    height: 30px;
+}
+
+@media screen and (max-width: 480px) {
+    .signup-div{
+        max-height:500px;
+        margin: 100px;
+        border-radius: 20px;
+        
+    }  
+    .input-signup{
+        border-width:1.9px;
+        border-style: dashed;
+        width: 200px;
+    }
+    .h1_s{
+        margin: 10px;
+    }
+}
+
+@media  screen and (max-width: 880px) {
+    .signup-div{
+        max-height:450px;
+        margin: 100px;
+        margin-top: 150px;
+        border-radius: 20px;
+        
+    }  
+    .input-signup{
+        border-width:1.9px;
+        border-style: dotted;
+        width: 250px;
+    }
+    .signup-btn{
+        width: 250px;
+    }
+
+    .h1_s{
+        margin: 10px;
+    }
+
+}
